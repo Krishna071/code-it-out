@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+ 
+int main()
+{
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    vector<int> v1[26];
+    for(int i=0;i<n;i++)
+    {
+	       v1[s[i]-97].push_back(i+1);
+     }
+    int m,ans=0;
+    cin>>m;
+    string str;
+    while(m--)
+    {
+         vector<int>v2(26,0);
+         cin>>str;
+         int x=str.length();
+        for(int i=0;i<x;i++)
+	    {
+	           v2[str[i]-97]++;
+	    } 
+	   for(int i=0;i<26;i++)
+	   {
+	           if(v2[i]>0)
+	           {
+	               ans=max(ans,v1[i][v2[i]-1]);
+	           }
+	   }
+	   cout<<ans<<endl;
+	   ans=0;
+    }
+  
+  
+   return 0;
+   
+}

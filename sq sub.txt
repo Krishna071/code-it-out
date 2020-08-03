@@ -1,0 +1,98 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+
+long long int findSubarraySum(long long int arr[], long long int n,  long long int sum) 
+{ 
+ 
+
+    unordered_map<long long int, long long int> prevSum; 
+
+  
+
+   long long int res = 0; 
+
+  
+ 
+
+   long long int currsum = 0; 
+
+  
+
+    for (long long int i = 0; i < n; i++) { 
+
+        currsum += arr[i]; 
+
+  
+
+        if (currsum == sum)  
+
+            res++;         
+
+  
+
+        if (prevSum.find(currsum - sum) !=  
+
+                                  prevSum.end())  
+
+            res += (prevSum[currsum - sum]); 
+
+          
+
+        prevSum[currsum]++; 
+
+    } 
+
+  
+
+    return res; 
+} 
+
+int main()
+
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    long long int t;
+    cin>>t;
+    while(t--)
+    {
+       
+       long long int n;
+       cin>>n;
+       long long  int arr[n];
+       for(long long int i=0;i<n;i++)
+       {
+           cin>>arr[i];
+       }
+       for(int i=0;i<n;i++)
+       {
+           if(arr[i]%2!=0)
+           {
+               arr[i]=0;
+           }
+           else if(arr[i]%4==0)
+           {
+               arr[i]=2;
+           }
+           else
+           {
+               arr[i]=1;
+           }
+       }
+      
+      
+       long long int s=0;
+        long long int sum = 1;
+         s=findSubarraySum(arr, n, 1); 
+         long long int total=0;
+         total= (n*(n+1))/2;
+         cout<<total-s<<"\n";
+        
+    }
+    
+    
+    return 0;
+    
+}

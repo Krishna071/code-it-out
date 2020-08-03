@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+   long long int k,n;
+   cin>>n>>k;
+   if(n%2==0)
+   {
+       if(k>n/2)
+       {
+       k=k-n/2;
+       cout<<2*k<<endl;
+       }
+       else
+       {
+           k=k-1;
+           cout<<(2*k)+1<<endl;
+       }
+       
+   }
+   else
+   {
+       long long int c=0;
+       c=(n/2)+1;
+     //  cout<<c<<" "<<n<<" "<<k<<" "<<endl;
+       if(k>c)
+       {
+           cout<<(k-c)*2<<endl;
+       }
+       else
+       {
+           k=k-1;
+           cout<<(2*k)+1<<endl;
+       }
+   }
+
+    return 0;
+}
